@@ -12,12 +12,14 @@ variable "vpc_paris" {
      region=string, 
      region_alias=string,
      cidr_block=string,
+     with_internet_access = bool,
      tags=map(string)
   })
   default = {
     region = "eu-west-3",
     region_alias = "paris",
     cidr_block = "20.10.0.0/16",
+    with_internet_access = false,
     tags = {"Label": "com.namaspace.paris"}
   }
 }
@@ -28,12 +30,14 @@ variable "vpc_oregon" {
      region=string, 
      region_alias=string,
      cidr_block=string,
+     with_internet_access = bool,
      tags=map(string)
   })
   default = {
     region = "us-west-2",
     region_alias = "oregon",
     cidr_block = "30.10.0.0/16",
+    with_internet_access = true,
     tags = {"Label": "com.namaspace.oregon"}
   }
 }

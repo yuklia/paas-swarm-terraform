@@ -26,6 +26,7 @@ module "main_rt_oregon" {
   source = "../modules/route-table"
 
   env = var.env
+  with_internet_access = var.vpc_oregon.with_internet_access
   vpc = {
      id = module.vpc-usa-oregon.vpc_id,
      region = var.vpc_oregon.region,
