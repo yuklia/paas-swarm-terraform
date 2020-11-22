@@ -6,6 +6,9 @@ terraform13 plan
 terraform13 state list
 terraform13 state show module.vpc-usa-oregon.aws_vpc.vpc
 
+destroy preview
+terraform13 plan -destroy
+
 ------
 Modules can either be loaded from the local filesystem, or a remote source
 
