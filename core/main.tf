@@ -48,31 +48,31 @@ module "rt_oregon_app" {
 #----------------PARIS START---------------------
 #------------------------------------------------
 
-# module "vpc-eu-paris" {
-#   source = "../modules/vpc"
+module "vpc-eu-paris" {
+  source = "../modules/vpc"
 
-#   env = var.env
-#   vpc = {
-#      region=var.vpc_paris.region, 
-#      region_alias=var.vpc_paris.region_alias,
-#      cidr_block=var.vpc_paris.cidr_block,
-#      tags=var.vpc_paris.tags
-#   }
-# }
+  env = var.env
+  vpc = {
+     region=var.vpc_paris.region, 
+     region_alias=var.vpc_paris.region_alias,
+     cidr_block=var.vpc_paris.cidr_block,
+     tags=var.vpc_paris.tags
+  }
+}
 
-# module "rt_paris_app" {
-#   source = "../modules/route-table"
+module "rt_paris_app" {
+  source = "../modules/route-table"
 
-#   env = var.env
-#   with_internet_access = false
-#   vpc = {
-#      id = module.vpc-eu-paris.vpc_id,
-#      region = var.vpc_paris.region,
-#      region_alias = var.vpc_paris.region_alias
-#      tags = {}
-#   }
-#   subnets = [{}]
-# }
+  env = var.env
+  with_internet_access = false
+  vpc = {
+     id = module.vpc-eu-paris.vpc_id,
+     region = var.vpc_paris.region,
+     region_alias = var.vpc_paris.region_alias
+     tags = {}
+  }
+  subnets = var.vpc_paris.private_subnets
+}
 
 #----------------PARIS END---------------------
 #----------------------------------------------

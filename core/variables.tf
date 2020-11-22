@@ -13,14 +13,24 @@ variable "vpc_paris" {
      region_alias=string,
      cidr_block=string,
      with_internet_access = bool,
-     tags=map(string)
+     tags=map(string),
+     private_subnets=object({
+          count = number,
+          cidr_block = list(string),
+          az = list(string)
+     })
   })
   default = {
     region = "eu-west-3",
     region_alias = "paris",
     cidr_block = "20.10.0.0/16",
     with_internet_access = false,
-    tags = {"Label": "com.namespace.paris"}
+    tags = {"Label": "com.namespace.paris"},
+    private_subnets = {
+        count = 3,
+        cidr_block = ["20.10.4.0/24", "20.10.5.0/24", "20.10.6.0/24"],
+        az = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
+    }
   }
 }
 
