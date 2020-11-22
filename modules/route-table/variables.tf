@@ -8,19 +8,20 @@ variable "env" {
   }
 }
 
+variable "with_internet_access" {
+  description = ""
+  type = bool
+  default = false
+}
+
 variable "vpc" {
   description = "VPC object structure"
   type = object({
      region=string, 
      region_alias=string,
-     cidr_block=string,
-     tags=map(string)
   })
   default = {
     region = "",
     region_alias = "",
-    cidr_block = "",
-    tags = {}
   }
 }
-

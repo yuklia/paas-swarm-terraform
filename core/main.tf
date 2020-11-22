@@ -1,17 +1,28 @@
 module "vpc-eu-paris" {
   source = "../modules/vpc"
 
-  region = var.region_paris
-  vpc_cidr_block = var.vpc_cidr_paris
   env = var.env
-  tags = {}
+  vpc = {
+     region=var.vpc_paris.region, 
+     region_alias=var.vpc_paris.region_alias,
+     cidr_block=var.vpc_paris.cidr_block,
+     tags=var.vpc_paris.tags
+  }
 }
 
-module "vpc-usa-origon" {
+# resource "aws_main_route_table_association" "a" {
+#   vpc_id         = aws_vpc.foo.id
+#   route_table_id = aws_route_table.bar.id
+# }
+
+module "vpc-usa-oregon" {
   source = "../modules/vpc"
 
-  region = var.region_oregon
-  vpc_cidr_block = var.vpc_cidr_oregon
   env = var.env
-  tags = {}
+  vpc = {
+     region=var.vpc_oregon.region, 
+     region_alias=var.vpc_oregon.region_alias,
+     cidr_block=var.vpc_oregon.cidr_block,
+     tags=var.vpc_oregon.tags
+  }
 }

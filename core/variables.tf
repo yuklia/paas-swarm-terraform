@@ -3,31 +3,39 @@
 variable "env" {
   description = "Infra environment"
   type        = string
-  default     = "dev1"
+  default     = "dev"
 }
 
-variable "region_paris" {
-  description = "Paris region"
-  type        = string
-  default     = "eu-west-3"
+variable "vpc_paris" {
+  description = "VPC object"
+  type = object({
+     region=string, 
+     region_alias=string,
+     cidr_block=string,
+     tags=map(string)
+  })
+  default = {
+    region = "eu-west-3",
+    region_alias = "paris",
+    cidr_block = "20.10.0.0/16",
+    tags = {"Label": "com.namaspace.paris"}
+  }
 }
 
-variable "region_oregon" {
-  description = "Oregon region"
-  type        = string
-  default     = "us-west-2"
-}
-
-variable "vpc_cidr_paris" {
-  description = "Paris VPC CIDR block"
-  type        = string
-  default     = "20.10.0.0/16"
-}
-
-variable "vpc_cidr_oregon" {
-  description = "Oregon VPC CIDR block"
-  type        = string
-  default     = "30.10.0.0/16"
+variable "vpc_oregon" {
+  description = "VPC object"
+  type = object({
+     region=string, 
+     region_alias=string,
+     cidr_block=string,
+     tags=map(string)
+  })
+  default = {
+    region = "us-west-2",
+    region_alias = "oregon",
+    cidr_block = "30.10.0.0/16",
+    tags = {"Label": "com.namaspace.oregon"}
+  }
 }
 
 

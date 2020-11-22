@@ -16,18 +16,17 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = var.region
-  shared_credentials_file = "/Users/yulia/.aws/credentials"
-  profile                 = "waeve"
+  region = var.vpc.region
 }
 
 # Create a VPC
 resource "aws_vpc" "vpc" {
-  cidr_block = var.vpc_cidr_block
+  cidr_block = var.vpc.cidr_block
+  
   tags = merge(
     var.default_tags, 
-    var.tags, {
-       Name = "vpc-${var.region}"
+    var.vpc.tags, {
+       Name = "vpc-${var.vpc.region_alias}"
        Environment = var.env
     })
 }
