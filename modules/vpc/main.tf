@@ -27,6 +27,7 @@ resource "aws_vpc" "vpc" {
     var.default_tags, 
     var.vpc.tags, {
        Name = "vpc-${var.vpc.region_alias}"
+       Region_Id = var.vpc.region
        Environment = var.env
     })
 }

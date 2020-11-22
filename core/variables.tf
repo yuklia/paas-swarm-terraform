@@ -38,7 +38,6 @@ variable "vpc_oregon" {
   }
 }
 
-
 # variable "vpc_name" {
 #   description = "Name of VPC"
 #   type        = string

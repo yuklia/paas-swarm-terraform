@@ -17,11 +17,15 @@ variable "with_internet_access" {
 variable "vpc" {
   description = "VPC object structure"
   type = object({
+     id=string,
      region=string, 
      region_alias=string,
+     tags = map(string)
   })
   default = {
+    id = "",
     region = "",
     region_alias = "",
+    tags = {}
   }
 }
